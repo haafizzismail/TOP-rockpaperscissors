@@ -4,3 +4,51 @@
     box-sizing: border-box;
 }
 
+body {
+    background: linear-gradient(rgb(31, 6, 100), rgb(161, 0, 89));
+    height: 100vh;
+    color: rgb(212, 212, 212);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+
+.main>* {
+    padding: 10px;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    gap: 50px;
+}
+
+.score {
+    display: flex;
+    width: 220px;
+    height: 220px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score h3 {
+    font-size: 10em;
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button {
+    cursor: pointer;
+    padding: 20px;
+    background-color: hsla(0, 0%, 100%, 0.1);
+    border-radius: 8px;
+}
