@@ -36,15 +36,14 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection;
-        while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-            playerSelection = prompt('Rock, Paper or Scissors? (Type Correctly)').toLowerCase();
-        }
+    let playerSelection;
+    // while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+    //     playerSelection = prompt('Rock, Paper or Scissors? (Type Correctly)').toLowerCase();
+    // }
 
-        let computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+    let computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+
 
     console.log(`Player Score: ${playerScore}.`);
     console.log(`Computer Score: ${computerScore}.`);
