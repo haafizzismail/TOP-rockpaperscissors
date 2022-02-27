@@ -1,6 +1,23 @@
 let playerScore = 0;
 let computerScore = 0;
 
+
+const playerDisplayScore = document.querySelector('.player-score');
+const computerDisplayScore = document.querySelector('.computer-score');
+const description = document.querySelector('.score-description');
+const winner = document.querySelector('.modal-text');
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const newGame = document.querySelector('.modal-button');
+const ring = document.querySelector('.ring');
+
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(button => {
+    button.addEventListener('click', game);
+});
+
+newGame.addEventListener('click', restartGame);
+
 function computerPlay() {
     const selection = ['stone', 'paper', 'scissors'];
     return selection[Math.floor(Math.random() * 3)];
@@ -9,7 +26,7 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
-        return "It's a Tie!";
+        return "Tie!";
     } else if (playerSelection === 'stone' && computerSelection === 'paper') {
         computerScore += 1;
         return "You Lose! Paper beats Stone.";
@@ -19,7 +36,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if (playerSelection === computerSelection) {
-        return "It's a Tie!";
+        return "Tie!";
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         computerScore += 1;
         return "You Lose! Scissors beats Paper.";
@@ -29,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if (playerSelection === computerSelection) {
-        return "It's a Tie!";
+        return "Tie!";
     } else if (playerSelection === 'scissors' && computerSelection === 'stone') {
         computerScore += 1;
         return "You Lose! Stone beats Scissors.";
@@ -41,24 +58,36 @@ function playRound(playerSelection, computerSelection) {
 
 function game(playerSelection) {
     playerSelection = this.alt;
-    console.log(playerSelection);
     let computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
+
+    let play = playRound(playerSelection, computerSelection);
     playerDisplayScore.textContent = playerScore;
     computerDisplayScore.textContent = computerScore;
-    console.log(`Player Score: ${playerScore}.`);
-    console.log(`Computer Score: ${computerScore}.`);
+    description.textContent = play;
     if (playerScore === 5) {
-        console.log('You are the winner!');
+        modal.classList.add('active');
+        overlay.classList.add('active');
+        winner.textContent = 'You WIN!';
     } else if (computerScore === 5) {
-        console.log('The Computer is the winner!');
+        modal.classList.add('active');
+        overlay.classList.add('active');
+        winner.textContent = 'You LOSE!';
     }
 }
 
-const buttons = document.querySelectorAll('.button');
-buttons.forEach(button => {
-    button.addEventListener('click', game);
-});
+function ringSid() {
 
-const playerDisplayScore = document.querySelector('.player-score');
-const computerDisplayScore = document.querySelector('.computer-score');
+}
+
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerDisplayScore.textContent = 0;
+    computerDisplayScore.textContent = 0;
+    description.textContent = 'Let the games begin!';
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+
+
