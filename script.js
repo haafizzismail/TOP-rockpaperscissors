@@ -79,12 +79,12 @@ function game(playerSelection) {
 }
 
 function playerRingSide() {
-    const imageHTML = `<img src="./img/${this.alt}.png" class="ring-image" alt="${this.alt}">`
+    const imageHTML = `<img src="./img/${this.alt}.png" class="ring-image" alt="${this.alt}" draggable="false">`
     playerRing.innerHTML = imageHTML;
 }
 
 function computerRingSide(selection) {
-    const imageHTML = `<img src="./img/${selection}.png" class="ring-image" alt="${selection}">`
+    const imageHTML = `<img src="./img/${selection}.png" class="ring-image" alt="${selection}" draggable="false">`
     computerRing.innerHTML = imageHTML;
 }
 
