@@ -9,18 +9,22 @@ const winner = document.querySelector('.modal-text');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const newGame = document.querySelector('.modal-button');
-const ring = document.querySelector('.ring');
+const playerRing = document.querySelector('.player-ring');
+const computerRing = document.querySelector('.computer-ring');
 
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => {
     button.addEventListener('click', game);
+    button.addEventListener('click', playerRingSide);
 });
 
 newGame.addEventListener('click', restartGame);
 
 function computerPlay() {
-    const selection = ['stone', 'paper', 'scissors'];
-    return selection[Math.floor(Math.random() * 3)];
+    const choices = ['stone', 'paper', 'scissors'];
+    const selection = choices[Math.floor(Math.random() * 3)];
+    computerRingSide(selection);
+    return selection;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -59,7 +63,6 @@ function playRound(playerSelection, computerSelection) {
 function game(playerSelection) {
     playerSelection = this.alt;
     let computerSelection = computerPlay();
-
     let play = playRound(playerSelection, computerSelection);
     playerDisplayScore.textContent = playerScore;
     computerDisplayScore.textContent = computerScore;
@@ -75,8 +78,14 @@ function game(playerSelection) {
     }
 }
 
-function ringSid() {
+function playerRingSide() {
+    const imageHTML = `<img src="./img/${this.alt}.png" class="ring-image" alt="${this.alt}">`
+    playerRing.innerHTML = imageHTML;
+}
 
+function computerRingSide(selection) {
+    const imageHTML = `<img src="./img/${selection}.png" class="ring-image" alt="${selection}">`
+    computerRing.innerHTML = imageHTML;
 }
 
 function restartGame() {
